@@ -1,0 +1,38 @@
+[
+    {
+        "className": "Task",
+        "objectId": "zRtRhj1ZC5",
+        "createdAt": "2024-05-11T16: 24: 54.802Z",
+        "updatedAt": "2024-05-11T16: 24: 54.802Z",
+        "DueDate": {
+            "__type": "Date",
+            "iso": "2024-05-11T08: 24: 00.000Z"
+        },
+        "Title": "Get milk",
+        "Status": "To Do"
+    },
+    {
+        "className": "Task",
+        "objectId": "b6OWxML4fc",
+        "createdAt": "2024-05-11T18: 02: 41.230Z",
+        "updatedAt": "2024-05-11T18: 02: 41.230Z",
+        "Title": "Swagger Task",
+        "DueDate": {
+            "__type": "Date",
+            "iso": "2018-11-06T18: 02: 52.249Z"
+        },
+        "Status": "To Do"
+    },
+    {
+        "className": "Task",
+        "objectId": "czOL3KynsT",
+        "createdAt": "2024-05-11T18: 08: 38.935Z",
+        "updatedAt": "2024-05-11T18: 23: 52.647Z",
+        "Title": "Updated Task X",
+        "DueDate": {
+            "__type": "Date",
+            "iso": "2024-05-11T18: 23: 51.788Z"
+        },
+        "Status": "In Progress"
+    }
+]
