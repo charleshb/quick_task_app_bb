@@ -95,6 +95,20 @@ class LoginState extends State<QTLoginScreen> {
                     ),
                   ),
                 ),
+                Padding(
+                  padding: EdgeInsets.fromLTRB(0, 8, 0, 30),
+                  child: Text(
+                    "2022MT12258",
+                    textAlign: TextAlign.start,
+                    overflow: TextOverflow.clip,
+                    style: TextStyle(
+                      fontWeight: FontWeight.w700,
+                      fontStyle: FontStyle.normal,
+                      fontSize: 14,
+                      color: Color.fromARGB(255, 64, 42, 92),
+                    ),
+                  ),
+                ),
                 Align(
                   alignment: Alignment.centerLeft,
                   child: Text(

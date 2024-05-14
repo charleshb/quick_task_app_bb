@@ -2,7 +2,7 @@ import 'package:parse_server_sdk_flutter/parse_server_sdk_flutter.dart';
 
 class QuickTaskAPIController {
 
-  Future<String> validateUserLogin(String username, String password) async {
+  Future<String?> validateUserLogin(String username, String password) async {
     //Filters objects in which a specific key’s value is equal to the provided value.
     final QueryBuilder<ParseObject> usernameQuery = QueryBuilder<ParseObject>(ParseObject('_User'));
     usernameQuery.whereEqualTo('username', username);
@@ -17,7 +17,7 @@ class QuickTaskAPIController {
     if (apiResponse.success && apiResponse.results != null) {
       for (var object in apiResponse.results as List<ParseObject>) {
         print('Valid user: ${object.objectId} - ${object.get<String>('username')}');
-        return object.objectId as Future<String>;
+        return object.objectId;
       }
     }
 

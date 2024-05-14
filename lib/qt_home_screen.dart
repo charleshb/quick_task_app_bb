@@ -48,8 +48,9 @@ class _QTHomeState extends State<QTHome> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text("Parse Todo List"),
-        backgroundColor: Colors.blueAccent,
+        title: Text("Task List"),
+        backgroundColor: Colors.deepPurpleAccent,
+        foregroundColor: Colors.white,
         centerTitle: true,
       ),
       body: Column(
@@ -64,14 +65,14 @@ class _QTHomeState extends State<QTHome> {
                       textCapitalization: TextCapitalization.sentences,
                       controller: taskController,
                       decoration: InputDecoration(
-                          labelText: "New todo",
-                          labelStyle: TextStyle(color: Colors.blueAccent)),
+                          labelText: "New Task",
+                          labelStyle: TextStyle(color: Colors.deepPurpleAccent)),
                     ),
                   ),
                   ElevatedButton(
                       style: ElevatedButton.styleFrom(
                         foregroundColor: Colors.white,
-                        backgroundColor: Colors.blueAccent,
+                        backgroundColor: Colors.deepPurpleAccent,
                       ),
                       onPressed: addTask,
                       child: Text("ADD")),
@@ -109,16 +110,18 @@ class _QTHomeState extends State<QTHome> {
                                 //Get Parse Object Values
                                 final varTodo = snapshot.data![index];
                                 final varTitle = varTodo['Title'];
+                                final varSubTitle = varTodo['DueDate'].toString().trimRight();
                                 final varDone = (varTodo['Status'] == 'Done');
                                 //*************************************
 
                                 return ListTile(
                                   title: Text(varTitle),
+                                  subtitle: Text(varSubTitle),
                                   leading: CircleAvatar(
                                     child: Icon(
                                         varDone ? Icons.check : Icons.error),
                                     backgroundColor:
-                                        varDone ? Colors.green : Colors.blue,
+                                        varDone ? Colors.green : Colors.purpleAccent,
                                     foregroundColor: Colors.white,
                                   ),
                                   trailing: Row(
@@ -132,7 +135,7 @@ class _QTHomeState extends State<QTHome> {
                                       IconButton(
                                         icon: Icon(
                                           Icons.delete,
-                                          color: Colors.blue,
+                                          color: Colors.purpleAccent,
                                         ),
                                         onPressed: () async {
                                           await deleteTaskOnPressed(varTodo, context);
