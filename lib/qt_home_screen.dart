@@ -116,7 +116,7 @@ class _QTHomeState extends State<QTHome> {
 
                                 return ListTile(
                                   title: Text(varTitle),
-                                  subtitle: Text(varSubTitle),
+                                  subtitle: Text("Due On: " + varSubTitle),
                                   leading: CircleAvatar(
                                     child: Icon(
                                         varDone ? Icons.check : Icons.error),
