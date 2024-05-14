@@ -19,12 +19,12 @@ import 'package:quick_task_app_bb/quick_task_api.dart';
   ));
 } */
 
-class Home extends StatefulWidget {
+class QTHome extends StatefulWidget {
   @override
-  _HomeState createState() => _HomeState();
+  _QTHomeState createState() => _QTHomeState();
 }
 
-class _HomeState extends State<Home> {
+class _QTHomeState extends State<QTHome> {
   final taskController = TextEditingController();
   var qtApiController = QuickTaskAPIController();
 

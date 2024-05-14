@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:parse_server_sdk_flutter/parse_server_sdk_flutter.dart';
 import 'qt_login_screen.dart';
 import 'quick_task_api.dart';
-import 'qt_ui.dart';
+import 'qt_home_screen.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -13,10 +13,10 @@ void main() async {
   await Parse().initialize(keyApplicationId, keyParseServerUrl,
       clientKey: keyClientKey, autoSendSessionId: true);
 
-  var taskController = QuickTaskAPIController();
+  /* var taskController = QuickTaskAPIController();
   var tasks = await taskController.getAllTasks();
   for(int i=0;i < tasks.length;i++)
-    print(tasks[i]['Title'] + " is due on " + tasks[i]['DueDate'].toString());
+    print(tasks[i]['Title'] + " is due on " + tasks[i]['DueDate'].toString()); */
 
   runApp(const MainApp());
 
@@ -31,11 +31,16 @@ class MainApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
+      title: 'Quick Task App - 2022MT12258',
       home: Scaffold(
         body: Center(
-          child: Home(),
+          child: QTLoginScreen(),
         ),
       ),
+      initialRoute: '/',
+      routes: {
+        '/Tasks': (context) => QTHome(),
+      }
     );
   }
 }

@@ -1,6 +1,65 @@
 import 'package:flutter/material.dart';
+import 'package:quick_task_app_bb/quick_task_api.dart';
 
-class QTLoginScreen extends StatelessWidget {
+class QTLoginScreen extends StatefulWidget {
+  @override
+  LoginState createState() => LoginState();
+}
+
+//class QTLoginScreen extends StatelessWidget {
+
+class LoginState extends State<QTLoginScreen> {
+  var emailInputController = TextEditingController(); //TextEditingController(text: "bcharles@gmail.com")
+  var passwordInputController = TextEditingController(); //TextEditingController(text: "12345")
+  var qtApiController = QuickTaskAPIController();
+
+  void loginOnPressed() async {
+    var username = emailInputController.text;
+    var password = passwordInputController.text;
+
+    if (username.trim().isEmpty) {
+      ScaffoldMessenger.of(context).showSnackBar(SnackBar(
+        content: Text("Please provide the username/email"),
+        duration: Duration(seconds: 2),
+      ));
+      return;
+    }
+    if (password.trim().isEmpty) {
+      ScaffoldMessenger.of(context).showSnackBar(SnackBar(
+        content: Text("Please provide the password."),
+        duration: Duration(seconds: 2),
+      ));
+      return;
+    }
+    var userId = qtApiController.validateUserLogin(username, password);
+
+    if (userId.toString() != "") {
+      ScaffoldMessenger.of(context).showSnackBar(SnackBar(
+        content: Text("Login was successful"),
+        duration: Duration(seconds: 2),
+      ));
+
+      // Navigate to the Task screen
+      Navigator.pushNamed(context, '/Tasks');
+    }
+    else {
+      ScaffoldMessenger.of(context).showSnackBar(SnackBar(
+        content: Text("Login failed"),
+        duration: Duration(seconds: 2),
+      ));
+    }
+
+    return;
+  }
+
+  void signUpOnPressed() async {
+    ScaffoldMessenger.of(context).showSnackBar(SnackBar(
+        content: Text("Coming soon!"),
+        duration: Duration(seconds: 2),
+      ));
+      return;
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -17,9 +76,9 @@ class QTLoginScreen extends StatelessWidget {
               children: [
                 ///***If you have exported images you must have to copy those images in assets/images directory.
                 Image(
-                  image: AssetImage("assets/images/todo.1024x1024-%281%29.png"),
-                  height: 90,
-                  width: 90,
+                  image: AssetImage("assets/images/gavel_24dp.png"),
+                  // height: 90,
+                  // width: 90,
                   fit: BoxFit.cover,
                 ),
                 Padding(
@@ -53,7 +112,7 @@ class QTLoginScreen extends StatelessWidget {
                 Padding(
                   padding: EdgeInsets.symmetric(vertical: 16, horizontal: 0),
                   child: TextField(
-                    controller: TextEditingController(text: "john@gmail.com"),
+                    controller: emailInputController,
                     obscureText: false,
                     textAlign: TextAlign.start,
                     maxLines: 1,
@@ -95,7 +154,7 @@ class QTLoginScreen extends StatelessWidget {
                   ),
                 ),
                 TextField(
-                  controller: TextEditingController(text: "12345678"),
+                  controller: passwordInputController,
                   obscureText: true,
                   textAlign: TextAlign.start,
                   maxLines: 1,
@@ -162,7 +221,7 @@ class QTLoginScreen extends StatelessWidget {
                       Expanded(
                         flex: 1,
                         child: MaterialButton(
-                          onPressed: () {},
+                          onPressed: signUpOnPressed,//() {},
                           color: Color(0xffffffff),
                           elevation: 0,
                           shape: RoundedRectangleBorder(
@@ -190,7 +249,7 @@ class QTLoginScreen extends StatelessWidget {
                       Expanded(
                         flex: 1,
                         child: MaterialButton(
-                          onPressed: () {},
+                          onPressed: loginOnPressed,//() {}
                           color: Color(0xff3a57e8),
                           elevation: 0,
                           shape: RoundedRectangleBorder(
